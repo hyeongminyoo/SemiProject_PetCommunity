@@ -203,7 +203,7 @@ public class MemberService {
 		String charSet = "utf-8";
 		String hostSMTP= "smtp.naver.com";
 		String hostSMTPid ="g1room";
-		String hostSMTPpwd = "wldnjs1111";
+		String hostSMTPpwd = "wldnjs1234";
 		
 		String fromEmail ="g1room@naver.com";
 		String fromName ="이지원";
