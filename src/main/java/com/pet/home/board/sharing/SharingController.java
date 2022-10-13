@@ -123,6 +123,10 @@ public class SharingController {
 	public ModelAndView getDetail(ModelAndView mv, BoardDTO boardDTO, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		boardDTO = sharingService.getDetail(boardDTO);
 		
+		BoardCommentPager boardCommentPager = new BoardCommentPager();
+		boardCommentPager.setNum(boardDTO.getNum());
+		Long count = sharingDAO.getCommentListTotalCount(boardCommentPager);
+		
 		String userName= boardDTO.getWriter();
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setUserName(userName);
@@ -169,7 +173,7 @@ public class SharingController {
 			mv.setViewName("board/detail");
 		}
 		
-		
+		mv.addObject("count",count);
 		mv.addObject("member", memberDTO);
 		
 		return mv;

@@ -123,7 +123,7 @@
   <c:if test="${not empty sessionScope.member}">
     <div style="display: inline-block; width: 500px;">
     <h5 style="color: gray; font-size: smaller; display: inline-block; width: 100px;">${sessionScope.member.userName}님<br>환영합니다!</h5>
-  <a class="btn-book-a-table" href="/member/mypage">Mypage</a>
+    <a class="btn-book-a-table" href="/member/mypage">Mypage</a>
   <c:choose>
     <c:when test="${empty member.password}">
       <!-- 카카오 로그인의 경우 password값이 없음. kakao session 끊는 링크-->

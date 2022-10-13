@@ -47,7 +47,7 @@
 </head>
 <body>
 <!-- header start -->
-<c:import url="/WEB-INF/views/template/testheader.jsp"></c:import>
+<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 <!-- header end -->
 <!-- ======= mypage Section ======= -->
 

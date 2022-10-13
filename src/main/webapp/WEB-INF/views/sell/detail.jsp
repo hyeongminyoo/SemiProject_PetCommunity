@@ -681,7 +681,7 @@
               </c:catch>
             </div>
             <div>
-            	<button type="button" style="width: 10%; height: 5%; border: 1px solid black; background-color:white; border-radius: 10px; margin-right: 300px;">
+            	<button type="button" style="margin-top: 90px; width: 8%; height: 5%; border: 1px solid black; background-color:white; border-radius: 10px; margin-right: 300px;">
             		<c:choose>
             			<c:when test="${ not empty shopcart }">
             				<img src="/resources/images/trolley.png" id="btnShopCartDelete" style="cursor: pointer; width: 70%;" data-item-num="${sellItemDTO.itemNum}" data-id="${member.userId}">

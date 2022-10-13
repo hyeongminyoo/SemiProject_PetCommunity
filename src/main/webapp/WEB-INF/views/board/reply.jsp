@@ -72,12 +72,13 @@
         <input class="form-control" type="file" id="file0" name="multipartFiles">
       </c:if>
 
-			<div id="addFiles">
+			<div id="addFiles" style=" text-align: center;">
 				<button type="button" class="btn btn-danger" id="fileAdd">파일 추가</button>
 			</div>
 			
-			
-			<button class="btn btn-primary btn-lg btn-block" type="button" id="btn">작성하기</button>
+			<div style="text-align: right;">
+			  <button class="btn btn-outline-danger btn-lg btn-block" type="button" id="btn">작성하기</button>
+      </div>
 			</form>
 		</div>
 

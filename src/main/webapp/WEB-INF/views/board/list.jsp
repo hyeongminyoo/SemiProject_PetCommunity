@@ -57,7 +57,7 @@
 		  </div>
 	
 		  <div class="col-12">
-		    <button type="submit" class="btn btn-primary">검색</button>
+		    <button type="submit" class="btn btn-outline-danger">검색</button>
 		  </div>
 		</form>
 		</div>
@@ -106,7 +106,7 @@
 	
 	</div>
 	<div class="mb-3">
-		<a href="./add" class="btn btn-primary">새 글 작성하기</a>
+		<a href="./add" class="btn btn-outline-danger">새 글 작성하기</a>
 	</div>
     </section>
 

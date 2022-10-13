@@ -4,25 +4,26 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pet.home.board.event.EventDAO">
 	<sql id="search">
-		(SELECT ROWNUM R, E.* FROM
-		(SELECT * FROM EVENT
+		(SELECT E.*, ROWNUM R FROM
+		(SELECT EV.*, EF.FILENAME, EF.ORINAME, EF.FILENUM FROM EVENT EV
+		LEFT JOIN EVENTFILE EF ON EV.NUM = EF.NUM
 		WHERE 
 			<choose>
-				<when test="kind=='title'">TITLE</when>
-				<when test="kind=='writer'">WRITER</when>
-				<otherwise>CONTENTS</otherwise>
+				<when test="kind=='title'">EV.TITLE</when>
+				<when test="kind=='writer'">EV.WRITER</when>
+				<otherwise>EV.CONTENTS</otherwise>
 			</choose>
-			LIKE '%'||#{search}||'%' ORDER BY NUM DESC) E)
+			LIKE '%'||#{search}||'%' ORDER BY EV.NUM DESC) E)
 	</sql>
 	
-	<select id="getList" parameterType="Pager" resultType="EventDTO">
+	<select id="getList" parameterType="Pager" resultMap="getDetailResult">
 		SELECT * FROM
 		<include refid="search"></include>
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<select id="getCount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(NUM) FROM
+		SELECT COUNT(ROWNUM) FROM
 		<include refid="search"></include>
 	</select>
 	

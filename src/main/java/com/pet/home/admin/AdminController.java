@@ -51,7 +51,8 @@ public class AdminController {
 	private EventService eventService;
 
 	@GetMapping("mypage")
-	public ModelAndView getMyPage(ModelAndView mv, Pager pager) throws Exception {
+	public ModelAndView getMyPage(ModelAndView mv, Pager pager, HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		Pager bizPager = new Pager();
 		bizPager.setSearch(pager.getSearch());
 		System.out.println("서치:"+bizPager.getSearch());

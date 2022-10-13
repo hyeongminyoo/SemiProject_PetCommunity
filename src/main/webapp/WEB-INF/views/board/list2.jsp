@@ -108,8 +108,10 @@
                 <h4>${dto.title}</h4>
                 <span>${dto.regDate}</span>
                 <p>by ${dto.writer}</p>
-                <img src="/resources/images/comment.png" style="width : 30px; height : 30px; " alt=""><span>${dto.count}</span>
-              </div>
+                <c:if test = "${board eq 'sharing'}">
+                  <img src="/resources/images/comment.png" style="width : 30px; height : 30px; " alt=""><span>${dto.count}</span>
+                </c:if>
+                </div>
             </div>
           </div><!-- 글 리스트 -->
           

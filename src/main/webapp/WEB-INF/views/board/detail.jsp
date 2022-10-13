@@ -89,17 +89,17 @@
 		</tbody>
 		</table>
 		
-		<div class="row">
+		<!-- <div class="row">
 			<c:forEach items="${dto.boardFileDTOs}" var="fileDTO">
 				<p>
 					<img src="../resources/upload/sharing/${fileDTO.fileName}" class="testimonial-img" alt="" style="border-radius: 50%; border: 4px solid #fff; margin: 0 auto; width: 300px; height: 300px; display: block;">
 				</p>
 			</c:forEach>
-		</div> 
+		</div>  -->
 		
 				<div class="form-floating">
 					<div class="mb-3">
-						<textarea class="form-control" id="text" rows="3" name="contents"></textarea>
+						<textarea class="form-control" id="text" rows="10" name="contents"></textarea>
 				  </div>
 			</div>
 		
@@ -117,14 +117,14 @@
 
     <c:if test="${board eq 'sharing'}">
     <!--------COMMENT---------->
-			<div class="row" style="padding-left: 120px; padding-right: 120px;">
-				<div class="mb-3">
-					<label for="writer" class="form-label">작성자</label>
-					<input type="text" class="form-control" id="writer" readonly value="${sessionScope.member.userId}">
+		<div class="row" style="padding-left: 120px; padding-right: 120px;">
+			<h5>${requestScope.count} 개의 댓글</h5>
+				<div class="mb-3" style="display: none;">
+					<label for="writer" class="form-label" style="display: none;">작성자</label>
+					<input type="text" class="form-control" id="writer" style="display: none;" readonly value="${sessionScope.member.userId}">
 				  </div>
 				  <div class="mb-3">
-					<label for="contents" class="form-label">내용</label>
-					<textarea class="form-control" id="contents" rows="3"></textarea>
+					<textarea class="form-control" id="contents" rows="3" placeholder="댓글을 작성하세요"></textarea>
 				  </div>
 				  <div class="mb-3">
 					<button type="button" id="commentAdd" data-num="${dto.num}">댓글 작성</button>

@@ -202,64 +202,56 @@
                   </div>
               </div>
               <!-- 왼쪽 서브 메뉴 -->
-              <div class="left_sub_menu">
+              <div class="left_sub_menu" id="submenu" style="display: none;">
                   <div class="sub_menu">
-                    <div>
-                        <div class="topbar" style="position: absolute; top:0;">
-                          <div id="menu_wrap" class="bg_white" style="z-index: 2; color: black; position:absolute">
-                          <span id="latitude" style="display: none;"></span><br>
-                          <span id="longitude"style="display: none;"></span><br>
-                          현재 날씨 : <img id="wicon" src=""><br>
-                          기온 : <span id="tempr"></span>
-                    </div>
-                      <h2>TITLE</h2>
-                      <ul class="big_menu">
-                          <li>MENU 1 <i class="arrow fas fa-angle-right"></i></li>
-                          <ul class="small_menu">
-                              <li><a href="#" id="item">소메뉴1-1</a></li>
-                              <li><a href="#">소메뉴1-2</a></li>
-                              <li><a href="">소메뉴1-3</a></li>
-                              <li><a href="#">소메뉴1-4</a></li>
-                          </ul>
-                      </ul>
-                      <ul class="big_menu">
-                          <li>MENU 2 <i class="arrow fas fa-angle-right"></i></li>
-                          <ul class="small_menu">
-                              <li><a href="#">소메뉴2-1</a></li>
-                              <li><a href="#"></a>소메뉴2-2</a></li>
-                          </ul>
-                      </ul>
-                      <ul class="big_menu">
-                          <li>MYPAGE</li>
-                      </ul>
+                    
+                      <strong><span style="font-size: 30px;" id="title"></span></strong>
+                      <div>
+                        <img id="itemimg" style="border-radius: 30%;">
+                      </div>
+       
                   </div>
+            
               </div>
               
           </div>
       
       </div>
       <hr>
-  </div>
-  
+      
+    </div>
+    
+    <div class="row" id="weather">
+      <div class="topbar" style="position: absolute; top:0;">
+        <div id="menu_wrap" class="bg_white" style="z-index: 2; color: black; position:absolute">
+        <span id="latitude" style="display: none;"></span><br>
+        <span id="longitude"style="display: none;"></span><br>
+        현재 날씨 : <img id="wicon" src=""><br>
+        기온 : <span id="tempr"></span>
+      </div>
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c8a091a525c100bb59fb876c4c7b6bf9&libraries=services"></script>
   <script src="http://code.jquery.com/jquery-latest.js"></script> 
   <script>
-       let list = new Array();
-    <c:forEach items="${list}" var="dto">
-      list.push({
-        itemNum: "${dto.itemNum}",
-        userId: "${dto.userId}",
-        itemName : "${dto.itemName}",
-        itemPrice : "${dto.itemPrice}",
-        itemZipCode : "${dto.itemZipCode}",
-        itemAddress : "${dto.itemAddress}",
-        itemDeAdress : "${dto.itemDeAddress}",
-        itemCatg : "${dto.itemCatg}",
-        fileDTOs : "${dto.fileDTOs}"
-      });
-    </c:forEach>
-        
+       
     
+ 
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET","/traveling/getlist");
+    xhttp.send();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            let result = JSON.parse(xhttp.responseText.trim());
+            list = result;
+            console.log(list);
+            getMap(list);
+        }
+    }
+
+
+ 
+    
+
+    function getMap(list){
     let lat = null;
     let lon = null;
     
@@ -333,7 +325,7 @@
 
  
     
-    function sellItemMarker(ist){
+    function sellItemMarker(list){
       var geocoder = new kakao.maps.services.Geocoder();
 
       for(let i=0; i<list.length; i++){
@@ -361,15 +353,21 @@
                   // 마커 위에 인포윈도우를 표시합니다
                   console.log("클릭");
                   let item = document.querySelector("#item");
-                  item.innerHTML = ""+list[i].itemName +"/"+ list[i].itemPrice+"";
-                  
-                  infowindow = new kakao.maps.InfoWindow({
-                    content: '<img src="/resources/upload/sellfile/'+list[i].fileDTOs[0].fileName+'>'
-                              +'<div style="width:150px;text-align:center;padding:6px 0;">'+list[i].itemName+'</div><br>'
-                              +'<div style="width:150px; text-align:center;padding:6px 0;">'+list[i].itemPrice+'</div>'
+                  let title = document.getElementById("title")
+                  let submenu = document.getElementById("submenu");
+                  let itemimg = document.getElementById("itemimg");
+                  itemimg.setAttribute("src","/resources/upload/sellfile/"+list[i].fileDTOs[0].fileName);
+                  submenu.removeAttribute("style");
+                  title.innerHTML = ""+list[i].itemName+"";
+                 
+                //   console.log(list[i].fileDTOs[0]);
+                //   infowindow = new kakao.maps.InfoWindow({
+                //     content: '<img src="/resources/upload/sellfile/'+list[i].fileDTOs[0].fileName+'/>'
+                //               +'<div style="width:150px;text-align:center;padding:6px 0;">'+list[i].itemName+'</div><br>'
+                //               +'<div style="width:150px; text-align:center;padding:6px 0;">'+list[i].itemPrice+'</div>'
 
-                            });
-                            infowindow.open(map, marker);
+                //             });
+                //             infowindow.open(map, marker);
 
                 });
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
@@ -419,7 +417,10 @@
       
       })
 
+      let weather = document.getElementById("weather");
+      map.addControl(weather, kakao.maps.ControlPosition.TOPRIGHT);
 
+    }
 
   </script>
 </body>

@@ -38,7 +38,7 @@ next2.addEventListener("click",function(){
                 if(list[i].block == '0'){
                     td = document.createElement("td");
                     td.setAttribute("class","deleteMember");
-                    td.setAttribute("onclick","deleteMember()");
+                    td.setAttribute("onclick","deleteMember(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단");
                     td.appendChild(text);
@@ -46,7 +46,7 @@ next2.addEventListener("click",function(){
                 }else{
                     td = document.createElement("td");
                     td.setAttribute("class","unblockMember");
-                    td.setAttribute("onclick","unblockMember()");
+                    td.setAttribute("onclick","unblockMember(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단 해제");
                     td.appendChild(text);
@@ -141,7 +141,7 @@ try {
                         if(list[i].block == '0'){
                             td = document.createElement("td");
                             td.setAttribute("class","deleteMember");
-                            td.setAttribute("onclick","deleteMember()");
+                            td.setAttribute("onclick","deleteMember(event)");
                             td.setAttribute("data-userId", list[i].userId);
                             text = document.createTextNode("차단");
                             td.appendChild(text);
@@ -149,7 +149,7 @@ try {
                         }else{
                             td = document.createElement("td");
                             td.setAttribute("class","unblockMember");
-                            td.setAttribute("onclick","unblockMember()");
+                            td.setAttribute("onclick","unblockMember(event)");
                             td.setAttribute("data-userId", list[i].userId);
                             text = document.createTextNode("차단 해제");
                             td.appendChild(text);
@@ -242,7 +242,7 @@ previous2.addEventListener("click",function(){
                 if(list[i].block == '0'){
                     td = document.createElement("td");
                     td.setAttribute("class","deleteMember");
-                    td.setAttribute("onclick","deleteMember()");
+                    td.setAttribute("onclick","deleteMember(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단");
                     td.appendChild(text);
@@ -250,7 +250,7 @@ previous2.addEventListener("click",function(){
                 }else{
                     td = document.createElement("td");
                     td.setAttribute("class","unblockMember");
-                    td.setAttribute("onclick","unblockMember()");
+                    td.setAttribute("onclick","unblockMember(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단 해제");
                     td.appendChild(text);
@@ -570,7 +570,7 @@ next2.addEventListener("click",function(){
                 if(list[i].block == '0'){
                     td = document.createElement("td");
                     td.setAttribute("class","deleteMember1");
-                    td.setAttribute("onclick","deleteMember1()");
+                    td.setAttribute("onclick","deleteMember1(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단");
                     td.appendChild(text);
@@ -578,7 +578,7 @@ next2.addEventListener("click",function(){
                 }else{
                     td = document.createElement("td");
                     td.setAttribute("class","unblockMember1");
-                    td.setAttribute("onclick","unblockMember1()");
+                    td.setAttribute("onclick","unblockMember1(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단 해제");
                     td.appendChild(text);
@@ -653,7 +653,7 @@ try {
                         if(list[i].block == '0'){
                             td = document.createElement("td");
                             td.setAttribute("class","deleteMember1");
-                            td.setAttribute("onclick","deleteMember1()");
+                            td.setAttribute("onclick","deleteMember1(event)");
                             td.setAttribute("data-userId", list[i].userId);
                             text = document.createTextNode("차단");
                             td.appendChild(text);
@@ -661,7 +661,7 @@ try {
                         }else{
                             td = document.createElement("td");
                             td.setAttribute("class","unblockMember1");
-                            td.setAttribute("onclick","unblockMember1()");
+                            td.setAttribute("onclick","unblockMember1(event)");
                             td.setAttribute("data-userId", list[i].userId);
                             text = document.createTextNode("차단 해제");
                             td.appendChild(text);
@@ -735,7 +735,7 @@ previous3.addEventListener("click",function(){
                 if(list[i].block == '0'){
                     td = document.createElement("td");
                     td.setAttribute("class","deleteMember1");
-                    td.setAttribute("onclick","deleteMember1()");
+                    td.setAttribute("onclick","deleteMember1(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단");
                     td.appendChild(text);
@@ -743,7 +743,7 @@ previous3.addEventListener("click",function(){
                 }else{
                     td = document.createElement("td");
                     td.setAttribute("class","unblockMember1");
-                    td.setAttribute("onclick","unblockMember1()");
+                    td.setAttribute("onclick","unblockMember1(event)");
                     td.setAttribute("data-userId", list[i].userId);
                     text = document.createTextNode("차단 해제");
                     td.appendChild(text);

@@ -62,23 +62,31 @@
 		  		<select class="form-select" id="validationDefault04" required name ="couponNum">
             <option selected disabled value="">선택</option>
             <c:forEach items="${list}" var="coupon">
-              <option id="coupon" value="${coupon.couponNum}"> 쿠폰명 : ${coupon.couponName} ( 할인율/할인금액 : ${coupon.discountRate} % )</option>
+              <c:choose>
+                <c:when test="${coupon.discountMethod eq '0'}">
+                  <option id="coupon" value="${coupon.couponNum}"> 쿠폰명 : ${coupon.couponName} ( 할인율/할인금액 : ${coupon.discountRate} % )</option>
+                </c:when>
+                <c:otherwise>
+                  <option id="coupon" value="${coupon.couponNum}"> 쿠폰명 : ${coupon.couponName} ( 할인율/할인금액 : ${coupon.discountPrice} 원 )</option>
+                </c:otherwise>
+              </c:choose>
             </c:forEach>
           </select>
 			</div>
       </c:if>
       
-      <c:if test = "${board eq 'sharing'}">
+      <c:if test = "${board eq 'sharing' or board eq 'event'}">
         <label for="file" class="form-label">대표 사진</label>
         <input class="form-control" type="file" id="file0" name="multipartFiles">
       </c:if>
 
-			<div id="addFiles">
+			<div id="addFiles" style=" text-align: center;">
 				<button type="button" class="btn btn-danger" id="fileAdd">파일 추가</button>
 			</div>
 			
-			
-			<button class="btn btn-primary btn-lg btn-block" type="button" id="btn">작성하기</button>
+			<div style="text-align: right;">
+			  <button class="btn btn-outline-danger btn-lg btn-block" type="button" id="btn">작성하기</button>
+      </div>
 			</form>
 		</div>
 
