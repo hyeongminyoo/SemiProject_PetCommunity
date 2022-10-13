@@ -70,6 +70,7 @@
 	<exclude-mapping path="/sell/detail"/>
 	<exclude-mapping path="/sell/pettx"/>
 	<exclude-mapping path="/sell/map"/>
+	<exclude-mapping path="/sell/search"/>
 	<exclude-mapping path="/event/list"/>
 	<exclude-mapping path="/notice/list"/>
 	<exclude-mapping path="/notice/detail"/>

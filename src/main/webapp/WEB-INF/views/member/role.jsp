@@ -94,7 +94,7 @@
               </section>
 
   <!-- footer start -->
-  <c:import url="/WEB-INF/views/template/testfooter.jsp"></c:import>
+  <c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
   <!-- footer end -->
 
 </body>

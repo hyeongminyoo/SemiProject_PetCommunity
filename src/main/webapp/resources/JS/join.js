@@ -248,7 +248,7 @@ join.addEventListener("click", function(){
     
         phone.addEventListener("change", function(){
  
-        if(0<phone.value.length && phone.value.length<12){
+        if(phone.value.length<11){
             phone.focus();
             phoneCheck=false;
             d4.innerHTML='올바른 번호를 입력해주세요.';
